@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayBg">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_edit_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorbackground"
+        app:theme="@style/ToolbarColoredBackArrow"
+        app:titleTextColor="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/toolbar_edit_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="@font/clanot_book"
+            android:text="@string/edit_account"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textsize_18sp" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:id="@+id/rel_image"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/toolbar_edit_account"
+        android:background="@color/colorGrayBg">
+
+        <ImageView
+            android:src="@drawable/circle_bg"
+            android:id="@+id/img_edit_account_edit_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_edit_account_driver_name_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_image"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingTop="@dimen/textsize_20dp"
+        android:text="@string/txt_full_name"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/textsize_12sp" />
+
+    <TextView
+        android:text="Hau Huynh"
+        android:id="@+id/txt_edit_account_driver_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_edit_account_driver_name_title"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingBottom="@dimen/textsize_20dp"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_16sp" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txt_edit_account_driver_name"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/txt_edit_account_phone_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingTop="@dimen/textsize_20dp"
+        android:text="@string/mobile_phone"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/textsize_12sp" />
+
+    <TextView
+        android:text="01645490651"
+        android:id="@+id/txt_edit_account_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_edit_account_phone_title"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingBottom="@dimen/textsize_20dp"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_16sp" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txt_edit_account_phone_number"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/txt_edit_account_email_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingTop="@dimen/textsize_20dp"
+        android:text="@string/email_address"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/textsize_12sp" />
+
+    <TextView
+        android:text="huynhphihah@gmail.com"
+        android:id="@+id/txt_edit_account_email_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_edit_account_email_title"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingBottom="@dimen/textsize_20dp"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_16sp" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/txt_edit_account_email_address"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/txt_edit_account_password_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line3"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/clanot_book"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingTop="@dimen/textsize_20dp"
+        android:text="@string/password"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/textsize_12sp" />
+
+    <TextView
+        android:id="@+id/txt_edit_account_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_edit_account_password_title"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/ionicons"
+        android:paddingBottom="@dimen/textsize_20dp"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:text="@string/txt_pass_dot"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textsize_16sp" />
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_change_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:theme="@style/ToolbarColoredBackArrowBlack"
+        app:titleTextColor="@color/colorWhite"></android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_change_name"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="80dp"
+            android:paddingTop="50dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_confirm_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_left_Editext"
+                android:layout_marginRight="@dimen/margin_right_Editext"
+                android:theme="@style/CustomEdittextBlack">
+
+                <EditText
+                    android:id="@+id/edt_change_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/clanot_book"
+                    android:hint="@string/txt_full_name" />
+            </android.support.design.widget.TextInputLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_change_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/textsize_20dp"
+        android:layout_marginLeft="@dimen/margin_left_Editext"
+        android:layout_marginRight="@dimen/margin_right_Editext"
+        android:background="@color/colorbackground"
+        android:fontFamily="@font/clanot_medium"
+        android:text="@string/btn_update_name_success"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_16sp" />
+
+</RelativeLayout>

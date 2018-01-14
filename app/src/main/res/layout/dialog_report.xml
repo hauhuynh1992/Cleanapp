@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/textsize_10dp"
+    android:layout_marginRight="@dimen/textsize_10dp"
+    android:layout_marginTop="@dimen/textsize_10dp"
+    android:background="@drawable/custom_dialog"
+    android:padding="@dimen/textsize_16dp">
+
+    <TextView
+        android:id="@+id/txt_view_task_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/clanot_book"
+        android:text="@string/rep_txt_report"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_18sp" />
+
+    <TextView
+        android:id="@+id/txt_ic_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/textsize_10dp"
+        android:fontFamily="@font/ionicons"
+        android:text="@string/ion_chevron_right"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_18sp" />
+</RelativeLayout>

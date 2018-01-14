@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_sms_verification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:theme="@style/ToolbarColoredBackArrowBlack"
+        app:titleTextColor="@color/colorWhite"></android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_sms_verification"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="80dp">
+
+            <TextView
+                android:id="@+id/txt_verify_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="120dp"
+                android:fontFamily="@font/clanot_book"
+                android:gravity="center_horizontal"
+                android:text="@string/verify_phone"
+                android:textColor="#000000"
+                android:textSize="@dimen/textsize_16sp" />
+
+            <TextView
+                android:id="@+id/txt_send_otp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_verify_number"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="@dimen/textsize_20dp"
+                android:fontFamily="@font/clanot_book"
+                android:gravity="center_horizontal"
+                android:text="@string/send_otp"
+                android:textColor="#000000"
+                android:textSize="@dimen/textsize_16sp" />
+
+            <EditText
+                android:id="@+id/edt_opt"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="295dp"
+                android:background="@null"
+                android:cursorVisible="false"
+                android:focusable="true"
+                android:inputType="number"
+                android:letterSpacing="1.5"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="328dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:background="@color/colorBlack" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorBlack" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorBlack" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorBlack" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorBlack" />
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/colorBlack" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

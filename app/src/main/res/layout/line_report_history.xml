@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txt_rep_history_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/clanot_medium"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingRight="@dimen/textsize_20dp"
+        android:paddingTop="@dimen/textsize_20dp"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/textsize_16sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_rep_history_date"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/textsize_20dp"
+        android:paddingLeft="@dimen/textsize_20dp"
+        android:paddingRight="@dimen/textsize_20dp"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/txt_req_history_rep_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:fontFamily="@font/clanot_book"
+            android:maxLines="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_14sp" />
+
+        <TextView
+            android:id="@+id/txt_req_history_rep_building"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:fontFamily="@font/clanot_book"
+            android:maxLines="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_14sp" />
+
+        <TextView
+            android:id="@+id/txt_req_history_rep_building_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:fontFamily="@font/clanot_book"
+            android:maxLines="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_14sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/textsize_5dp"
+        android:layout_below="@+id/ll_content"
+        android:background="@color/line" />
+</RelativeLayout>

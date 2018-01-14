@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorbackground"
+    android:padding="@dimen/margin_left_Editext">
+
+    <TextView
+        android:id="@+id/txt_dialog_login_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/margin_left_Editext"
+        android:fontFamily="@font/clanot_book"
+        android:padding="10dp"
+        android:paddingBottom="@dimen/margin_left_Editext"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/btn_dialog_login_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_dialog_login_message"
+        android:background="@color/colorbackground"
+        android:fontFamily="@font/clanot_medium"
+        android:gravity="center"
+        android:text="@string/btn_confirm_ok"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold" />
+</RelativeLayout>

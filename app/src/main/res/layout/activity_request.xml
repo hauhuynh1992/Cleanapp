@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorbackground">
+
+        <Button
+            android:id="@+id/txt_ic_close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@null"
+            android:fontFamily="@font/ionicons"
+            android:text="@string/ic_comeback_left"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textsize_24sp" />
+
+        <TextView
+            android:id="@+id/txt_view_job_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/txt_ic_close"
+            android:layout_toRightOf="@+id/txt_ic_close"
+            android:fontFamily="@font/clanot_book"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textsize_18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_title"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:id="@+id/req_txt_title"
+                style="@style/JobEnRouteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clanot_medium"
+                android:text="@string/rep_txt_title" />
+
+            <EditText
+                android:id="@+id/req_edt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/req_txt_title"
+                android:layout_marginLeft="@dimen/textsize_10dp"
+                android:layout_marginRight="@dimen/textsize_10dp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_medium"
+                android:padding="@dimen/textsize_10dp" />
+
+            <TextView
+                android:id="@+id/txt_photo"
+                style="@style/JobEnRouteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/req_edt_title"
+                android:fontFamily="@font/clanot_medium"
+                android:text="@string/req_txt_photo" />
+
+            <ImageView
+                android:id="@+id/req_img_before"
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/txt_photo"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:background="@drawable/no_image"
+                android:gravity="center"
+                android:textColor="@color/colorBlack">
+
+            </ImageView>
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textsize_5dp"
+                android:layout_below="@+id/req_img_before"
+                android:layout_marginTop="@dimen/textsize_10sp"
+                android:background="@color/line" />
+
+            <TextView
+                android:id="@+id/txt_job_detail"
+                style="@style/JobEnRouteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line1"
+                android:fontFamily="@font/clanot_medium"
+                android:text="@string/req_txt_details" />
+
+            <Spinner
+                android:id="@+id/dl_req_company"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/txt_job_detail"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_book"
+                android:textColor="@color/colorBlack" />
+
+            <Spinner
+                android:id="@+id/dl_req_building"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/dl_req_company"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:layout_marginTop="@dimen/textsize_20dp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_book"
+                android:textColor="@color/colorBlack" />
+
+            <Spinner
+                android:id="@+id/dl_req_building_level"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/dl_req_building"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:layout_marginTop="@dimen/textsize_20dp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_book"
+                android:textColor="@color/colorBlack" />
+
+            <Spinner
+                android:id="@+id/dl_req_option"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/dl_req_building_level"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:layout_marginTop="@dimen/textsize_20dp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_book"
+                android:textColor="@color/colorBlack" />
+
+
+            <TextView
+                android:id="@+id/req_txt_notes"
+                style="@style/JobEnRouteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dl_req_option"
+                android:fontFamily="@font/clanot_medium"
+                android:text="@string/req_txt_notes" />
+
+            <EditText
+                android:id="@+id/req_edt_notes"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/req_txt_notes"
+                android:layout_marginLeft="@dimen/textsize_10dp"
+                android:layout_marginRight="@dimen/textsize_10dp"
+                android:background="@color/colorGray"
+                android:fontFamily="@font/clanot_medium"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/textsize_10dp" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textsize_5dp"
+                android:layout_below="@+id/req_edt_notes"
+                android:layout_marginTop="@dimen/textsize_10sp"
+                android:background="@color/line" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/ll_btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorbackground"
+            android:fontFamily="@font/clanot_medium"
+            android:text="@string/req_txt_submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+
+    <include
+        layout="@layout/progress_bar_custom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

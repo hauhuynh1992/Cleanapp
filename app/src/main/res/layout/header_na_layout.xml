@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/textsize_140dp"
+    android:background="@color/colorbackground">
+
+    <ImageView
+        android:id="@+id/img_menu_header"
+        android:layout_width="@dimen/textsize_64dp"
+        android:layout_height="@dimen/textsize_64dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_left_Editext"
+        android:src="@drawable/clean_icon" />
+
+    <TextView
+        android:id="@+id/txt_header_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/img_menu_header"
+        android:fontFamily="@font/clanot_book"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/textsize_5dp"
+        android:paddingTop="@dimen/textsize_5dp"
+        android:text="Hau Huynh"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_18sp">
+
+
+    </TextView>
+</RelativeLayout>

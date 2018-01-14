@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorbackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/txt_tab_home"
+            style="@style/TabMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_home" />
+
+        <TextView
+            android:id="@+id/txt_tab_history"
+            style="@style/TabMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_history" />
+
+
+        <TextView
+            android:id="@+id/txt_tab_periodic"
+            style="@style/TabMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_periodic" />
+
+        <TextView
+            android:id="@+id/txt_tab_inspection"
+            style="@style/TabMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_inspection" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_number_history"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/shape_notification"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="+"
+        android:textColor="@color/colorWhite" />
+
+</RelativeLayout>
+

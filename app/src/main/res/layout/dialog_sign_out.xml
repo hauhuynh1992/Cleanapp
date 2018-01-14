@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_left_Editext"
+    android:background="@drawable/custom_dialog"
+    android:padding="@dimen/margin_left_Editext">
+
+    <TextView
+        android:id="@+id/txt_sign_out_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/clanot_medium"
+        android:text="@string/confirm_sign_out"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/textsize_18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txt_sign_out_title"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btn_sign_out_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/clanot_medium"
+            android:text="@string/btn_yes"
+            android:textSize="@dimen/textsize_12sp" />
+
+        <Button
+            android:id="@+id/btn_sign_out_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_sign_out_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/clanot_medium"
+            android:text="@string/btn_no"
+            android:textSize="@dimen/textsize_12sp" />
+
+    </LinearLayout>
+</RelativeLayout>

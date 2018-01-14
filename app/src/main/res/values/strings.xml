@@ -1,0 +1,168 @@
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name">Clean</string>
+    <string name="app_full_name">Cleaning Service</string>
+
+    <!-- General Button-->
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_yes">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="btn_confirm_ok">OK, I got it</string>
+    <string name="confirm_sign_out">Do you want Sign Out?</string>
+
+    <!-- General Message-->
+    <string name="msg_no_internet">There is no internet connection at the moment.Please try again.</string>
+    <string name="msg_permission_denied">Permission denied</string>
+    <string name="msg_device_id_empty">Device Id is empty</string>
+    <string name="msg_device_token_empty">Device Token is empty</string>
+    <string name="msg_title_empty">Please input title</string>
+    <string name="msg_note_empty">Please input Remark</string>
+
+    <!-- Login Page -->
+    <string name="mobile_phone">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login_text">LOGIN</string>
+    <string name="msg_input_username">Please input User name</string>
+    <string name="msg_input_pass">Please input password</string>
+    <string name="msg_phone_invalid">Phone number is invalid</string>
+    <string name="msg_input_fist_name">Please input Fist Name</string>
+    <string name="msg_input_last_name">Please input Last Name</string>
+
+    <!-- Dashboard Page -->
+    <string name="txt_history">History</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_contact">Contact</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_version_code">Version App</string>
+    <string name="double_to_exit">Please double click to exit</string>
+
+    <!-- History Page -->
+    <string name="txt_history_outstanding">Outstanding</string>
+    <string name="txt_history_completed">Completed</string>
+
+    <!-- Inspection Page -->
+    <string name="txt_inspection">Inspection</string>
+
+    <!-- Periodic Page -->
+    <string name="txt_periodic">Periodic</string>
+
+
+    <!-- Request Page -->
+    <string name="req_txt_photo">Photo</string>
+    <string name="req_txt_Before">Before</string>
+    <string name="req_txt_After">Before</string>
+    <string name="req_txt_details">Details</string>
+    <string name="req_txt_notes">Notes</string>
+    <string name="req_txt_title">Title</string>
+    <string name="req_btn_submit">Submit</string>
+    <string-array name="array_company">
+        <item>Select Company</item>
+        <item>Tomlar</item>
+        <item>Teg</item>
+        <item>Renesas</item>
+    </string-array>
+
+    <!-- Report Page -->
+    <string name="rep_txt_Before">Before</string>
+    <string name="rep_txt_After">After</string>
+    <string name="rep_btn_complete">Complete</string>
+    <string name="rep_btn_submit">Submit</string>
+    <string name="rep_txt_title">Title</string>
+    <string name="rep_txt_report">Report</string>
+    <string name="rep_txt_company">Company</string>
+    <string name="rep_txt_building">Building</string>
+    <string name="rep_txt_building_level">Level</string>
+    <string name="rep_txt_option">Option</string>
+    <string name="rep_your_report_complete">Your Report is completed!</string>
+
+    <!-- Report Page -->
+    <string name="req_txt_submit">Submit</string>
+
+    <!-- Edit Account Page -->
+    <string name="edit_account">Edit Account</string>
+    <string name="select_gallery">Select from gallery</string>
+    <string name="select_camera">Open your camera</string>
+    <string name="txt_full_name">Full Name</string>
+    <string name="txt_pass_dot">&#xf21b; &#xf21b; &#xf21b; &#xf21b; &#xf21b; &#xf21b; &#xf21b;</string>
+
+    <!-- Change phone Page -->
+    <string name="change_mobile_number">Change Mobile Number</string>
+    <string name="btn_update_phone">Update Phone</string>
+    <string name="txt_username">User name</string>
+
+    <!-- Change name Page -->
+    <string name="btn_update_name">Change Full Name</string>
+    <string name="name_empty">Full Name is empty</string>
+    <string name="change_name_success">Change Full Name successfully</string>
+    <string name="btn_update_name_success">Update Full Name</string>
+
+    <!-- Change email Page -->
+    <string name="change_e_mail_address">Change E-mail Address</string>
+    <string name="email_address">Email Address</string>
+    <string name="email_invalid">Email Address is invalid</string>
+    <string name="email_empty">Email address is empty</string>
+    <string name="change_email_success">Change Email address successfully</string>
+    <string name="btn_update_email_success">Update Email Address</string>
+
+    <!-- Change password Page -->
+    <string name="change_password">New Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="chang_pass_success">Change password successfully</string>
+    <string name="password_mismatch">New password and confirm password you enter doesn\'t match</string>
+    <string name="new_pass_empty">New password is empty</string>
+    <string name="confirm_pass_empty">Confirm password is empty</string>
+    <string name="btn_reset_password">Change Password</string>
+    <string name="txt_enter_password">Enter your existing password in order to change to a new password</string>
+    <string name="txt_password_exist">Existing Password</string>
+    <string name="btn_verify_password">Verify Password</string>
+
+    <!-- Change SMS Page -->
+    <string name="security_code_message">A security code will be sent to you to verify the mobile number</string>
+    <string name="send_otp">We have sent an OTP to your new number.</string>
+    <string name="verify_phone">Verify your number</string>
+    <string name="sms_verify">SMS Verification</string>
+    <string name="sms_success">SMS verfication success</string>
+    <string name="otp_empty">OTP is empty</string>
+    <string name="change_phone_success">Change Phone Number Successful</string>
+
+    <!-- Code of icon -->
+    <string name="ic_user_follow" translatable="false">&#xe003;</string>
+    <string name="ic_user_unfollow" translatable="false">&#xe004;</string>
+    <string name="ic_android_contact" translatable="false">&#xf2d8;</string>
+    <string name="ic_android_call" translatable="false">&#xf2d2;</string>
+    <string name="ic_android_chat" translatable="false">&#xf2d4;</string>
+    <string name="ic_android_user" translatable="false">&#xe005;</string>
+    <string name="ic_android_done" translatable="false">&#xf383;</string>
+    <string name="ic_android_close" translatable="false">&#xf2d7;</string>
+    <string name="ic_ios_lock_outline" translatable="false">&#xf402;</string>
+    <string name="ic_ios_information" translatable="false">&#xf44d;</string>
+    <string name="ic_cancel" translatable="false">&#xf36e;</string>
+    <string name="ic_trash" translatable="false">&#xf37f;</string>
+    <string name="ic_edit" translatable="false">&#xf37e;</string>
+    <string name="ic_current_location" translatable="false">&#xf2e9;</string>
+    <string name="ic_navigate" translatable="false">&#xf398;</string>
+    <string name="ic_pickup_location" translatable="false">&#xf3a7;</string>
+    <string name="ic_waypoints_location" translatable="false">&#xf3a6;</string>
+    <string name="ic_destination_location" translatable="false">&#xf455;</string>
+    <string name="ic_dot_more_vertical" translatable="false">&#xf397;</string>
+    <string name="ic_menu" translatable="false">&#xf453;</string>
+    <string name="ic_comeback_left" translatable="false">&#xf2ca;</string>
+    <string name="ion_chevron_right" translatable="false">&#xf125;</string>
+    <string name="ion_dot_more_vertical" translatable="false">&#xf397;</string>
+    <string name="ion_map" translatable="false">&#xf203;</string>
+    <string name="ion_dot" translatable="false">&#xf21b;</string>
+    <string name="ion_android_star" translatable="false">&#xf2fc;</string>
+    <string name="fa_add">&#xf2c7;</string>
+
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <!--For front screen-->
+    <string name="front_sign_up">SIGN UP</string>
+    <string name="front_login">SIGN IN</string>
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_bw_icon">5dp</dimen>
+
+    <dimen name="textsize_dialog">20sp</dimen>
+    <dimen name="textsize_dialog_smaller">14sp</dimen>
+    <dimen name="textsize_button">16sp</dimen>
+
+    <dimen name="textsize_10sp">10sp</dimen>
+    <dimen name="textsize_12sp">12sp</dimen>
+    <dimen name="textsize_14sp">14sp</dimen>
+    <dimen name="textsize_16sp">16sp</dimen>
+    <dimen name="textsize_18sp">18sp</dimen>
+    <dimen name="textsize_20sp">20sp</dimen>
+    <dimen name="textsize_36dp">36sp</dimen>
+
+    <dimen name="textsize_5dp">5dp</dimen>
+    <dimen name="textsize_10dp">10dp</dimen>
+    <dimen name="textsize_14dp">14dp</dimen>
+    <dimen name="textsize_15dp">15dp</dimen>
+    <dimen name="textsize_16dp">16dp</dimen>
+    <dimen name="textsize_17dp">17dp</dimen>
+    <dimen name="textsize_18dp">18dp</dimen>
+    <dimen name="textsize_20dp">20dp</dimen>
+    <dimen name="textsize_22dp">22dp</dimen>
+    <dimen name="textsize_24dp">24dp</dimen>
+    <dimen name="textsize_30dp">30dp</dimen>
+    <dimen name="textsize_35dp">35dp</dimen>
+    <dimen name="textsize_32dp">32dp</dimen>
+    <dimen name="textsize_48dp">48dp</dimen>
+    <dimen name="textsize_64dp">64dp</dimen>
+    <dimen name="textsize_96dp">96dp</dimen>
+    <dimen name="textsize_140dp">140dp</dimen>
+
+
+    <dimen name="app_name_title">30sp</dimen>
+    <dimen name="app_type_title">15sp</dimen>
+    <dimen name="margin_left_Editext">20dp</dimen>
+    <dimen name="margin_right_Editext">20dp</dimen>
+    <dimen name="driver_name">20dp</dimen>
+    <dimen name="testsize_ferry_upcoming_date">16sp</dimen>
+    <dimen name="testsize_ferry_upcoming_address">14sp</dimen>
+    <dimen name="testsize_job_history_date">16sp</dimen>
+    <dimen name="testsize_job_history_list_address">14sp</dimen>
+    <dimen name="testsize_job_upcoming_date">16sp</dimen>
+    <dimen name="testsize_job_upcoming_address">14sp</dimen>
+    <dimen name="testsize_setting_launch_navigator">14sp</dimen>
+    <dimen name="testsize_dialog_title">18sp</dimen>
+    <dimen name="testsize_dialog_address">20sp</dimen>
+    <dimen name="textsize_24sp">24sp</dimen>
+    <dimen name="margin_password">3dp</dimen>
+
+</resources>

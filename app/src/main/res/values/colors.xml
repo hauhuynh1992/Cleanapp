@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Default-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--Common color-->
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhileGray">#e4e0e0</color>
+    <color name="colorBlack">#de000000</color>
+    <color name="colorGray">#b5b5b5</color>
+    <color name="colorGrayBg">#f0f0f0</color>
+    <color name="colorGreen">#34b980</color>
+    <color name="colorBlue">#0149ff</color>
+    <color name="colorViolet">#c100ff</color>
+
+    <!--Background color-->
+    <color name="colorbackground">#BC6AEC</color>
+    <color name="colorbackgroundLight">#c100ff</color>
+    <color name="transparent_black_80">#CC000000</color>
+
+    <!--EditText color-->
+    <color name="textColorHint">#c100ff</color>
+
+
+    <color name="line">#dedede</color>
+    <color name="colorManeuver">#030303</color>
+
+</resources>
