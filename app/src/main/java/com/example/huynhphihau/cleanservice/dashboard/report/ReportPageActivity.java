@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -53,8 +55,8 @@ public class ReportPageActivity
     RelativeLayout rel_loading;
     @BindView(R.id.req_img_before)
     ImageView req_img_before;
-    @BindView(R.id.req_img_after)
-    ImageView req_img_after;
+    @BindView(R.id.req_vp_img_after)
+    ViewPager req_vp_img_after;
     @BindView(R.id.txt_rep_company)
     TextView txt_rep_company;
     @BindView(R.id.txt_rep_building)
@@ -75,10 +77,13 @@ public class ReportPageActivity
     Button btnSubmit;
     @BindView(R.id.rep_edt_remark)
     EditText edtRemark;
+    @BindView(R.id.btn_add_image)
+    ImageView btnAddImage;
 
 
     ReportPagePresenter mPresenter;
     ReportData reportData;
+    ViewPagerImageAdapter adapter;
 
     File photoFile = null;
     private static String mCurrentPhotoPath;
@@ -95,6 +100,9 @@ public class ReportPageActivity
         /* Set color background for Progress bar */
         rel_loading.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent_black_80));
 
+        adapter = new ViewPagerImageAdapter(ReportPageActivity.this);
+        req_vp_img_after.setAdapter(adapter);
+
         txt_ic_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +118,8 @@ public class ReportPageActivity
             }
         });
 
-        req_img_after.setOnClickListener(new View.OnClickListener() {
+
+        btnAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GetPhotoDialogFragment dialogFragment = GetPhotoDialogFragment.newInstance();
@@ -226,27 +235,10 @@ public class ReportPageActivity
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case PERMISSIONS_REQUEST_CAMERA:
-                    File imgFile = new File(mCurrentPhotoPath);
-                    if (imgFile.exists()) {
-                        Picasso.with(this)
-                                .load(imgFile)
-                                .placeholder(R.drawable.no_image)
-                                .resize(req_img_after.getWidth(), req_img_after.getHeight())
-                                .centerCrop()
-                                .error(R.drawable.no_image)
-                                .into(req_img_after);
-                    }
                     mPresenter.createTempFileWithSampleSize(ReportPageActivity.this, mCurrentPhotoPath, reportData.getId());
                     break;
                 case PERMISSIONS_REQUEST_GALLERY:
                     Uri selectedImageUri = data.getData();
-                    Picasso.with(this)
-                            .load(selectedImageUri)
-                            .placeholder(R.drawable.no_image)
-                            .resize(req_img_after.getWidth(), req_img_after.getHeight())
-                            .centerCrop()
-                            .error(R.drawable.no_image)
-                            .into(req_img_after);
                     mPresenter.createTempFileWithSampleSize(ReportPageActivity.this, FileManager.getPath(this, selectedImageUri), reportData.getId());
                     break;
             }
@@ -271,13 +263,14 @@ public class ReportPageActivity
                     .into(req_img_before);
 
             if (reportData.getImages().size() >= 2) {
-                Picasso.with(this)
-                        .load(reportData.getImages().get(reportData.getImages().size() - 1).getPhotoUrl())
-                        .placeholder(R.drawable.circle_bg)
-                        .resize(req_img_after.getWidth(), req_img_after.getHeight())
-                        .centerCrop()
-                        .error(R.drawable.circle_bg)
-                        .into(req_img_after);
+                ArrayList<String> images = new ArrayList<>();
+                for (int i = 1; i < reportData.getImages().size(); i++) {
+                    images.add(reportData.getImages().get(i).getPhotoUrl());
+                }
+
+                if (images.size() > 0) {
+                    adapter.setImages(images);
+                }
             }
         }
 
@@ -334,7 +327,7 @@ public class ReportPageActivity
         ratingBar.setVisibility(View.GONE);
         edtRemark.setVisibility(View.GONE);
         btnSubmit.setVisibility(View.GONE);
-        req_img_after.setEnabled(true);
+        req_vp_img_after.setEnabled(true);
         req_img_before.setEnabled(true);
     }
 
@@ -348,7 +341,7 @@ public class ReportPageActivity
         ratingBar.setVisibility(View.GONE);
         edtRemark.setVisibility(View.GONE);
         btnSubmit.setVisibility(View.GONE);
-        req_img_after.setEnabled(false);
+        req_vp_img_after.setEnabled(false);
         req_img_before.setEnabled(false);
     }
 
@@ -369,14 +362,14 @@ public class ReportPageActivity
             ratingBar.setRating(5);
             ratingBar.setNumStars(5);
             btn_check_complete.setVisibility(View.GONE);
-            req_img_after.setEnabled(false);
+            req_vp_img_after.setEnabled(false);
             req_img_before.setEnabled(false);
         } else {
             btn_check_complete.setVisibility(View.GONE);
             ratingBar.setVisibility(View.GONE);
             edtRemark.setVisibility(View.GONE);
             btnSubmit.setVisibility(View.GONE);
-            req_img_after.setEnabled(false);
+            req_vp_img_after.setEnabled(false);
             req_img_before.setEnabled(false);
         }
     }

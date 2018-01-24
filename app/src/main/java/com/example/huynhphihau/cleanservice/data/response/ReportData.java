@@ -3,7 +3,7 @@ package com.example.huynhphihau.cleanservice.data.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by huynhphihau on 12/16/17.
@@ -45,7 +45,7 @@ public class ReportData {
     private String createTime;
     @SerializedName("images")
     @Expose
-    private List<Image> images = null;
+    private ArrayList<Image> images = null;
     @SerializedName("isRead")
     @Expose
     private int isRead;
@@ -105,7 +105,7 @@ public class ReportData {
         return completedTime;
     }
 
-    public List<Image> getImages() {
+    public ArrayList<Image> getImages() {
         return images;
     }
 }

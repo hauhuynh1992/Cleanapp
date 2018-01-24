@@ -73,22 +73,30 @@
                 android:fontFamily="@font/clanot_medium"
                 android:text="@string/rep_txt_After" />
 
-            <ImageView
-                android:id="@+id/req_img_after"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/req_vp_img_after"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_below="@+id/txt_after"
                 android:layout_marginLeft="@dimen/textsize_10sp"
                 android:layout_marginRight="@dimen/textsize_10sp"
                 android:background="@color/colorGray"
-                android:gravity="center"
-                android:textColor="@color/colorBlack" />
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/btn_add_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/txt_after"
+                android:layout_marginLeft="@dimen/textsize_10sp"
+                android:layout_marginRight="@dimen/textsize_10sp"
+                android:src="@drawable/plus"></ImageView>
 
             <View
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textsize_5dp"
-                android:layout_below="@+id/req_img_after"
+                android:layout_below="@+id/req_vp_img_after"
                 android:layout_marginTop="@dimen/textsize_10sp"
                 android:background="@color/line" />
 
