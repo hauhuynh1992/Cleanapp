@@ -202,9 +202,9 @@ public class DashboardActivity extends AbstractActivity {
         //Set avatar for driver
         Picasso.with(this)
                 .load(photoURL)
-                .placeholder(R.drawable.circle_bg)
+                .placeholder(R.drawable.no_image)
                 .transform(new RoundedImageView())
-                .error(R.drawable.circle_bg)
+                .error(R.drawable.no_image)
                 .into(img_menu_header);
 
         img_menu_header.setOnClickListener(new View.OnClickListener() {

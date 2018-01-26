@@ -154,7 +154,7 @@ public class ReportPagePresenter implements ReportPageContact.ReportPagePresente
         MultipartBody.Part[] fileToUploads = new MultipartBody.Part[1];
         fileToUploads[0] = MultipartBody.Part.createFormData("files", file.getName(), requestBody);
 
-        mAPIService.uploadImageAfter(id, fileToUploads).enqueue(new Callback<BaseRespone<ReportData>>() {
+        mAPIService.uploadImageAfter(id, BaseConfig.IMAGE_AFTER, fileToUploads).enqueue(new Callback<BaseRespone<ReportData>>() {
             @Override
             public void onResponse(Call<BaseRespone<ReportData>> call, Response<BaseRespone<ReportData>> response) {
                 if (response.isSuccessful()) {
@@ -216,11 +216,13 @@ public class ReportPagePresenter implements ReportPageContact.ReportPagePresente
         switch (Status) {
             case BaseConfig.REP_STATUS_PROCESSING:
             case BaseConfig.REP_STATUS_NEW:
-                if(!BaseApplication.getInstance().getUser().isUserStandard()) mView.showCompleteButton();
+                if (!BaseApplication.getInstance().getUser().isUserStandard())
+                    mView.showCompleteButton();
                 else mView.hideCompleteButton();
                 break;
             case BaseConfig.REP_STATUS_COMPLETED:
-                if(BaseApplication.getInstance().getUser().isUserStandard()) mView.showRattingStar();
+                if (BaseApplication.getInstance().getUser().isUserStandard())
+                    mView.showRattingStar();
                 else mView.hideCompleteButton();
                 break;
         }

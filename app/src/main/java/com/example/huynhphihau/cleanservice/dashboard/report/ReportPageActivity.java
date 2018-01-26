@@ -421,7 +421,7 @@ public class ReportPageActivity
         Picasso.with(dialog.getContext())
                 .load(imagePath)
                 .placeholder(R.drawable.no_image)
-                .error(R.drawable.circle_bg)
+                .error(R.drawable.no_image)
                 .fit().centerCrop()
                 .into(imgPicture);
 

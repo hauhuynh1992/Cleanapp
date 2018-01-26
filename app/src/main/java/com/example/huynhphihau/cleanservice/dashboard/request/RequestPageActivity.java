@@ -236,10 +236,10 @@ public class RequestPageActivity
                     if (imgFile.exists()) {
                         Picasso.with(this)
                                 .load(imgFile)
-                                .placeholder(R.drawable.circle_bg)
+                                .placeholder(R.drawable.no_image)
                                 .resize(req_img_before.getWidth(), req_img_before.getHeight())
                                 .centerCrop()
-                                .error(R.drawable.circle_bg)
+                                .error(R.drawable.no_image)
                                 .into(req_img_before);
                     }
                     mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, mCurrentPhotoPath);
@@ -248,10 +248,10 @@ public class RequestPageActivity
                     Uri selectedImageUri = data.getData();
                     Picasso.with(this)
                             .load(selectedImageUri)
-                            .placeholder(R.drawable.circle_bg)
+                            .placeholder(R.drawable.no_image)
                             .resize(req_img_before.getWidth(), req_img_before.getHeight())
                             .centerCrop()
-                            .error(R.drawable.circle_bg)
+                            .error(R.drawable.no_image)
                             .into(req_img_before);
                     mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, FileManager.getPath(this, selectedImageUri));
                     break;

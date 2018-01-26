@@ -105,7 +105,10 @@ public interface API {
 
     @Multipart
     @POST(ServerConfig.API_SUPERVISOR_UPLOAD_IMAGE_AFTER)
-    Call<BaseRespone<ReportData>> uploadImageAfter(@Path("id") long id, @Part MultipartBody.Part[] files);
+    Call<BaseRespone<ReportData>> uploadImageAfter(
+                                                    @Path("id") long id,
+                                                    @Part("isBefore") int isBefore,
+                                                    @Part MultipartBody.Part[] files);
 
     /**
      * REQUEST API

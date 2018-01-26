@@ -61,10 +61,10 @@ public class ViewPagerImageAdapter extends PagerAdapter {
         // Capture position and set to the ImageView
         Picasso.with(this.context)
                 .load(images.get(position))
-                .placeholder(R.drawable.circle_bg)
+                .placeholder(R.drawable.no_image)
                 .resize(100, 100)
                 .centerCrop()
-                .error(R.drawable.circle_bg)
+                .error(R.drawable.no_image)
                 .into(imgReports);
 
         itemView.setOnClickListener(new View.OnClickListener() {
