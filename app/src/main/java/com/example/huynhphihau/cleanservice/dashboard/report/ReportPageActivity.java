@@ -349,6 +349,7 @@ public class ReportPageActivity
         ratingBar.setVisibility(View.GONE);
         edtRemark.setVisibility(View.GONE);
         btnSubmit.setVisibility(View.GONE);
+        btnAddImage.setVisibility(View.GONE);
         req_vp_img_after.setEnabled(false);
         req_img_before.setEnabled(false);
     }
@@ -362,7 +363,7 @@ public class ReportPageActivity
 
         // Show data
         loadData();
-
+        btnAddImage.setVisibility(View.GONE);
         if (reportData.getIsRated() == BaseConfig.REPORT_UNREAD) {
             ratingBar.setVisibility(View.VISIBLE);
             edtRemark.setVisibility(View.VISIBLE);
