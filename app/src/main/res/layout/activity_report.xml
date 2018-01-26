@@ -53,23 +53,22 @@
                 android:fontFamily="@font/clanot_medium"
                 android:text="@string/rep_txt_Before" />
 
-            <ImageView
-                android:id="@+id/req_img_before"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/req_vp_img_before"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_below="@+id/txt_before"
                 android:layout_marginLeft="@dimen/textsize_10sp"
                 android:layout_marginRight="@dimen/textsize_10sp"
                 android:background="@color/colorGray"
-                android:gravity="center"
-                android:textColor="@color/colorBlack" />
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/txt_after"
                 style="@style/JobEnRouteTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/req_img_before"
+                android:layout_below="@+id/req_vp_img_before"
                 android:fontFamily="@font/clanot_medium"
                 android:text="@string/rep_txt_After" />
 

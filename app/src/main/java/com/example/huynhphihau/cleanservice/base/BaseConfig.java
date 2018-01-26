@@ -23,6 +23,11 @@ public class BaseConfig {
 
     public static final int REPORT_RATE = 1;
 
+    public static final int IMAGE_BEFORE = 1;
+
+    public static final int IMAGE_AFTER = 0;
+
+
 
     /**
      * intent address

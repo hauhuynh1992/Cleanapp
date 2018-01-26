@@ -61,10 +61,10 @@ public class ReportPageActivity
     Button txt_ic_close;
     @BindView(R.id.rel_loading)
     RelativeLayout rel_loading;
-    @BindView(R.id.req_img_before)
-    ImageView req_img_before;
     @BindView(R.id.req_vp_img_after)
     ViewPager req_vp_img_after;
+    @BindView(R.id.req_vp_img_before)
+    ViewPager req_vp_img_before;
     @BindView(R.id.txt_rep_company)
     TextView txt_rep_company;
     @BindView(R.id.txt_rep_building)
@@ -91,7 +91,8 @@ public class ReportPageActivity
 
     ReportPagePresenter mPresenter;
     ReportData reportData;
-    ViewPagerImageAdapter adapter;
+    ViewPagerImageAdapter imageAfterAdapter;
+    ViewPagerImageAdapter imaBeforeAdapter;
 
     File photoFile = null;
     private static String mCurrentPhotoPath;
@@ -108,8 +109,10 @@ public class ReportPageActivity
         /* Set color background for Progress bar */
         rel_loading.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent_black_80));
 
-        adapter = new ViewPagerImageAdapter(ReportPageActivity.this, this);
-        req_vp_img_after.setAdapter(adapter);
+        imageAfterAdapter = new ViewPagerImageAdapter(ReportPageActivity.this, this);
+        imaBeforeAdapter = new ViewPagerImageAdapter(ReportPageActivity.this, this);
+        req_vp_img_after.setAdapter(imageAfterAdapter);
+        req_vp_img_before.setAdapter(imaBeforeAdapter);
 
         txt_ic_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,31 +258,28 @@ public class ReportPageActivity
 
 
     private void loadData() {
+
         this.reportData = mPresenter.getReport();
         if (reportData == null) {
             return;
         }
 
         // Check Image report
+        ArrayList<String> imagesBefore = new ArrayList<>();
+        ArrayList<String> imagesAfter = new ArrayList<>();
         if (reportData.getImages().size() != 0 && reportData.getImages() != null) {
-            Picasso.with(this)
-                    .load(reportData.getImages().get(0).getPhotoUrl())
-                    .placeholder(R.drawable.no_image)
-                    .resize(req_img_before.getWidth(), req_img_before.getHeight())
-                    .centerCrop()
-                    .error(R.drawable.no_image)
-                    .into(req_img_before);
+            for (int i = 0; i < reportData.getImages().size(); i++) {
 
-            if (reportData.getImages().size() >= 2) {
-                ArrayList<String> images = new ArrayList<>();
-                for (int i = 1; i < reportData.getImages().size(); i++) {
-                    images.add(reportData.getImages().get(i).getPhotoUrl());
-                }
-
-                if (images.size() > 0) {
-                    adapter.setImages(images);
+                if (reportData.getImages().get(i).getIsBefore() == BaseConfig.IMAGE_BEFORE) {
+                    imagesBefore.add(reportData.getImages().get(i).getPhotoUrl());
+                } else {
+                    imagesAfter.add(reportData.getImages().get(i).getPhotoUrl());
                 }
             }
+
+            if (imagesBefore.size() > 0) imaBeforeAdapter.setImages(imagesBefore);
+            if (imagesAfter.size() > 0) imageAfterAdapter.setImages(imagesAfter);
+
         }
 
         //Set Company name
@@ -336,7 +336,7 @@ public class ReportPageActivity
         edtRemark.setVisibility(View.GONE);
         btnSubmit.setVisibility(View.GONE);
         req_vp_img_after.setEnabled(true);
-        req_img_before.setEnabled(true);
+        req_vp_img_before.setEnabled(true);
     }
 
     @Override
@@ -351,7 +351,7 @@ public class ReportPageActivity
         btnSubmit.setVisibility(View.GONE);
         btnAddImage.setVisibility(View.GONE);
         req_vp_img_after.setEnabled(false);
-        req_img_before.setEnabled(false);
+        req_vp_img_before.setEnabled(false);
     }
 
     @Override
@@ -372,14 +372,14 @@ public class ReportPageActivity
             ratingBar.setNumStars(5);
             btn_check_complete.setVisibility(View.GONE);
             req_vp_img_after.setEnabled(false);
-            req_img_before.setEnabled(false);
+            req_vp_img_before.setEnabled(false);
         } else {
             btn_check_complete.setVisibility(View.GONE);
             ratingBar.setVisibility(View.GONE);
             edtRemark.setVisibility(View.GONE);
             btnSubmit.setVisibility(View.GONE);
             req_vp_img_after.setEnabled(false);
-            req_img_before.setEnabled(false);
+            req_vp_img_before.setEnabled(false);
         }
     }
 

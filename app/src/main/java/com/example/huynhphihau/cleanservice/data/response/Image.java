@@ -11,6 +11,13 @@ public class Image {
     @SerializedName("photo_url")
     @Expose
     private String photoUrl;
+    @SerializedName("isBefore")
+    @Expose
+    private int isBefore;
+
+    public int getIsBefore() {
+        return isBefore;
+    }
 
     public String getPhotoUrl() {
         return photoUrl;
