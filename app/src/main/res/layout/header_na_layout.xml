@@ -25,7 +25,5 @@
         android:text="Hau Huynh"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/textsize_18sp">
-
-
     </TextView>
 </RelativeLayout>
