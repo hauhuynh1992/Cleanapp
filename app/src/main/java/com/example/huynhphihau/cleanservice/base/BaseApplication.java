@@ -4,9 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.huynhphihau.cleanservice.data.response.User;
 import com.example.huynhphihau.cleanservice.util.SessionManager;
 
+import io.fabric.sdk.android.Fabric;
 import okhttp3.Headers;
 
 /**
@@ -29,6 +31,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         mInstance = this;
         mSessionManager = new SessionManager(mInstance);
     }

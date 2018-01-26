@@ -144,6 +144,9 @@
             android:parentActivityName=".account.EditAccountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DashboardTheme" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e53bc7c27f98190ecf302e6c329ee36e1fd88060" />
     </application>
 
 </manifest>
