@@ -1,7 +1,9 @@
 package com.example.huynhphihau.cleanservice.dashboard.report;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,7 +15,11 @@ import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -47,7 +53,9 @@ import static com.example.huynhphihau.cleanservice.base.BaseConfig.PERMISSIONS_R
 
 public class ReportPageActivity
         extends BaseActivity
-        implements ReportPageContact.ReportPageView {
+        implements
+        ReportPageContact.ReportPageView,
+        ViewPagerImageAdapter.ViewImageListener {
 
     @BindView(R.id.txt_ic_close)
     Button txt_ic_close;
@@ -100,7 +108,7 @@ public class ReportPageActivity
         /* Set color background for Progress bar */
         rel_loading.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent_black_80));
 
-        adapter = new ViewPagerImageAdapter(ReportPageActivity.this);
+        adapter = new ViewPagerImageAdapter(ReportPageActivity.this, this);
         req_vp_img_after.setAdapter(adapter);
 
         txt_ic_close.setOnClickListener(new View.OnClickListener() {
@@ -384,5 +392,38 @@ public class ReportPageActivity
             double numStart = ratingBar.getRating();
             mPresenter.submitRating(id, title, remark, numStart);
         }
+    }
+
+    @Override
+    public void onViewImage(String imagePath) {
+        // Zoom detail Image
+        ImageView closeIcon, imgPicture;
+        Dialog dialog = new Dialog(ReportPageActivity.this);
+        dialog.setContentView(R.layout.dialog_zoom_image);
+        dialog.setCanceledOnTouchOutside(true);
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        window.setAttributes(wlp);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        /*Mapping*/
+        closeIcon = dialog.findViewById(R.id.img_report_close_icon);
+        imgPicture = dialog.findViewById(R.id.img_report_view_picture);
+
+        closeIcon.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        // Zoom image
+        Picasso.with(dialog.getContext())
+                .load(imagePath)
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.circle_bg)
+                .fit().centerCrop()
+                .into(imgPicture);
+
+        dialog.show();
     }
 }

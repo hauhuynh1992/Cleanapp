@@ -23,9 +23,15 @@ public class ViewPagerImageAdapter extends PagerAdapter {
     Context context;
     ArrayList<String> images = new ArrayList<>();
     LayoutInflater inflater;
+    /**
+     * listener
+     */
+    ViewImageListener mListener;
 
-    public ViewPagerImageAdapter(Context context) {
+
+    public ViewPagerImageAdapter(Context context, ViewImageListener listener) {
         this.context = context;
+        this.mListener = listener;
     }
 
     @Override
@@ -35,7 +41,7 @@ public class ViewPagerImageAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view ==  object;
+        return view == object;
     }
 
     @Override
@@ -61,8 +67,17 @@ public class ViewPagerImageAdapter extends PagerAdapter {
                 .error(R.drawable.circle_bg)
                 .into(imgReports);
 
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(position != PagerAdapter.POSITION_NONE){
+                    mListener.onViewImage(images.get(position));
+                }
+            }
+        });
+
         // Add viewpager_item.xml to ViewPager
-        ((ViewPager) container).addView(itemView);
+        container.addView(itemView);
 
         return itemView;
     }
@@ -74,9 +89,16 @@ public class ViewPagerImageAdapter extends PagerAdapter {
 
     }
 
-    public void setImages(ArrayList<String> images){
+    public void setImages(ArrayList<String> images) {
         this.images.clear();
         this.images.addAll(images);
         notifyDataSetChanged();
+    }
+
+    /**
+     * listener for  Image adapter
+     */
+    public interface ViewImageListener {
+        void onViewImage(String imagePath);
     }
 }
