@@ -148,7 +148,6 @@ public class ReportPagePresenter implements ReportPageContact.ReportPagePresente
             return;
         }
         // release bitmap
-        bitmap = null;
         File file = new File(childFile.getAbsolutePath());
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part[] fileToUploads = new MultipartBody.Part[1];

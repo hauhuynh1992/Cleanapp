@@ -81,7 +81,6 @@ public class InspectionActivity
                 }
             }
         });
-        refreshData();
     }
 
     @Override

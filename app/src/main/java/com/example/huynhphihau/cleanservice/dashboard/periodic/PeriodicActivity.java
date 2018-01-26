@@ -84,7 +84,6 @@ public class PeriodicActivity
                 }
             }
         });
-        refreshData();
     }
 
     @Override
