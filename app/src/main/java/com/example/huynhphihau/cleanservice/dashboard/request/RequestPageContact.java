@@ -8,6 +8,7 @@ import com.example.huynhphihau.cleanservice.data.response.BuildingDetail;
 import com.example.huynhphihau.cleanservice.data.response.Company;
 import com.example.huynhphihau.cleanservice.data.response.ReportOption;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,10 +53,10 @@ public interface RequestPageContact {
 
         List<Company> getCompanies();
 
-        void createReport(String title, long reportId, String remark, long buildingId, long buildingLevelId, long companyId, long jobType, String pathFile);
+        void createReport(String title, long reportId, String remark, long buildingId, long buildingLevelId, long companyId, long jobType, ArrayList<String> pathFile);
 
         void createTempFileWithSampleSize(Context context, String originPath);
 
-        String getImagePath();
+        ArrayList<String> getImagePath();
     }
 }

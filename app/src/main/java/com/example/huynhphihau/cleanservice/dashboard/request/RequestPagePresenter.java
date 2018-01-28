@@ -44,7 +44,7 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
     private BuildingDetail buildingDetail;
     private List<ReportOption> reportOptions;
     private List<Company> companies;
-    private String path = "";
+    private ArrayList<String> path = new ArrayList<>();
 
     public RequestPagePresenter(RequestPageActivity view) {
         this.mView = view;
@@ -150,11 +150,14 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
     }
 
     @Override
-    public void createReport(String title, long reportId, String remark, long buildingId, long buildingLevelId, long companyId, long jobType, String pathFile){
-        File file = new File(pathFile);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part[] fileToUploads = new MultipartBody.Part[1];
-        fileToUploads[0] = MultipartBody.Part.createFormData("files", file.getName(), requestBody);
+    public void createReport(String title, long reportId, String remark, long buildingId, long buildingLevelId, long companyId, long jobType, ArrayList<String> pathFiles) {
+        File file = null;
+        MultipartBody.Part[] fileToUploads = new MultipartBody.Part[pathFiles.size()];
+        for (int i = 0; i < pathFiles.size(); i++) {
+            file = new File(pathFiles.get(i));
+            RequestBody surveyBody = RequestBody.create(MediaType.parse("image/*"), file);
+            fileToUploads[i] = MultipartBody.Part.createFormData("files[]", file.getName(), surveyBody);
+        }
 
         RequestBody mTitle = RequestBody.create(MediaType.parse("text/plain"), title);
         RequestBody mReportId = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(reportId));
@@ -164,12 +167,12 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
         RequestBody mcompanyId = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(companyId));
         RequestBody mjobType = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(jobType));
 
-        if(TextUtils.isEmpty(title)){
+        if (TextUtils.isEmpty(title)) {
             mView.showDialogMessage(mView.getString(R.string.msg_title_empty));
             return;
         }
 
-        if(TextUtils.isEmpty(remark)){
+        if (TextUtils.isEmpty(remark)) {
             mView.showDialogMessage(mView.getString(R.string.msg_note_empty));
             return;
         }
@@ -177,7 +180,7 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
         mView.showProgressDialog();
         mAPIService.createReport(mTitle, mReportId, mRemark, mBuildingId, mBuildingLevelId, mcompanyId, mjobType, fileToUploads).enqueue(new Callback<BaseRespone<RequestData>>() {
             @Override
-            public void onResponse(Call<BaseRespone<RequestData>> call, Response<BaseRespone<RequestData>>response) {
+            public void onResponse(Call<BaseRespone<RequestData>> call, Response<BaseRespone<RequestData>> response) {
                 if (response.isSuccessful()) {
                     mView.hideProgressDialog();
                     mView.back();
@@ -242,7 +245,7 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
 
         // create the temp file to upload
-        File childFile = BitmapUtils.createImageFromBitmap(context, bitmap, "ValetAngles_" + timeStamp);
+        File childFile = BitmapUtils.createImageFromBitmap(context, bitmap, "CleanApp_" + timeStamp);
 
         if (childFile == null) {
             mView.showDialogMessage("Can not found Image");
@@ -253,11 +256,11 @@ public class RequestPagePresenter implements RequestPageContact.RequestPagePrese
         bitmap = null;
 
         // upload temp file
-        path = childFile.getAbsolutePath();
+        path.add(childFile.getAbsolutePath());
     }
 
     @Override
-    public String getImagePath(){
+    public ArrayList<String> getImagePath() {
         return path;
     }
 }

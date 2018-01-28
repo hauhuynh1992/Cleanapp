@@ -1,7 +1,9 @@
 package com.example.huynhphihau.cleanservice.dashboard.request;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,9 +12,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,8 +35,6 @@ import com.example.huynhphihau.cleanservice.data.response.Building;
 import com.example.huynhphihau.cleanservice.data.response.BuildingDetail;
 import com.example.huynhphihau.cleanservice.data.response.Company;
 import com.example.huynhphihau.cleanservice.data.response.ReportOption;
-import com.example.huynhphihau.cleanservice.dialog.GetPhotoDialogFragment;
-import com.example.huynhphihau.cleanservice.util.FileManager;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -43,7 +48,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.example.huynhphihau.cleanservice.base.BaseConfig.PERMISSIONS_REQUEST_CAMERA;
-import static com.example.huynhphihau.cleanservice.base.BaseConfig.PERMISSIONS_REQUEST_GALLERY;
 
 /**
  * Created by huynhphihau on 12/17/17.
@@ -52,12 +56,11 @@ import static com.example.huynhphihau.cleanservice.base.BaseConfig.PERMISSIONS_R
 public class RequestPageActivity
         extends BaseActivity
         implements
-        RequestPageContact.RequestPageView {
+            RequestPageContact.RequestPageView,
+            ViewPagerRequestImageAdapter.ViewImageListener {
 
     @BindView(R.id.txt_ic_close)
     Button txt_ic_close;
-    @BindView(R.id.req_img_before)
-    ImageView req_img_before;
     @BindView(R.id.dl_req_company)
     Spinner dl_req_company;
     @BindView(R.id.dl_req_building)
@@ -74,6 +77,10 @@ public class RequestPageActivity
     EditText req_edt_title;
     @BindView(R.id.btn_submit)
     Button btn_submit;
+    @BindView(R.id.vp_req_img_before)
+    ViewPager vp_req_img_before;
+    @BindView(R.id.btn_req_add_image)
+    ImageView btn_req_add_image;
 
     RequestPagePresenter mPresenter;
     List<String> buildingNames = new ArrayList<String>();
@@ -85,6 +92,7 @@ public class RequestPageActivity
     List<Company> companies;
     List<ReportOption> reportOptions;
 
+
     long buildingId = -1;
     long buildingLevelId = -1;
     long companyId = -1;
@@ -94,6 +102,7 @@ public class RequestPageActivity
     String remark = "";
     String title = "";
     File photoFile = null;
+    ViewPagerRequestImageAdapter imaBeforeAdapter;
 
 
     @Override
@@ -114,20 +123,13 @@ public class RequestPageActivity
             }
         });
 
+        imaBeforeAdapter = new ViewPagerRequestImageAdapter(RequestPageActivity.this, this);
+        vp_req_img_before.setAdapter(imaBeforeAdapter);
+
         // Get Image path
         mCurrentPhotoPath = getIntent().getStringExtra("IMAGE_PATH");
-        Log.d("XXXX imge", req_img_before.getWidth()+"");
         if(!TextUtils.isEmpty(mCurrentPhotoPath)){
-            File imgFile = new File(mCurrentPhotoPath);
-            if (imgFile.exists()) {
-                Picasso.with(this)
-                        .load(imgFile)
-                        .placeholder(R.drawable.no_image)
-                        .resize(350, 150)
-                        .centerCrop()
-                        .error(R.drawable.no_image)
-                        .into(req_img_before);
-            }
+            imaBeforeAdapter.setImages(mCurrentPhotoPath);
             mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, mCurrentPhotoPath);
         }
 
@@ -139,42 +141,25 @@ public class RequestPageActivity
             @Override
             public void onClick(View view) {
                 // Check paramenter
-                mCurrentPhotoPath = mPresenter.getImagePath();
-                if (TextUtils.isEmpty(mCurrentPhotoPath)) {
+                if (mPresenter.getImagePath().size() <= 0) {
                     Toast.makeText(RequestPageActivity.this, "Please selected photo", Toast.LENGTH_SHORT).show();
                     return;
                 };
 
                 remark = req_edt_notes.getText().toString();
                 title = req_edt_title.getText().toString();
-                mPresenter.createReport(title, optionId, remark, buildingId, buildingLevelId, companyId, jobType, mCurrentPhotoPath);
+                mPresenter.createReport(title, optionId, remark, buildingId, buildingLevelId, companyId, jobType, mPresenter.getImagePath());
             }
         });
 
-        req_img_before.setOnClickListener(new View.OnClickListener() {
+        btn_req_add_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GetPhotoDialogFragment dialogFragment = GetPhotoDialogFragment.newInstance();
-                dialogFragment.setListener(new GetPhotoDialogFragment.OnGetPhotoDialogListener() {
-                    @Override
-                    public void OnPickPhotoClicked() {
-                        if (ContextCompat.checkSelfPermission(RequestPageActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                            openGallery();
-                        } else {
-                            ActivityCompat.requestPermissions(RequestPageActivity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSIONS_REQUEST_GALLERY);
-                        }
-                    }
-
-                    @Override
-                    public void OnTakePhotoClicked() {
-                        if (ContextCompat.checkSelfPermission(RequestPageActivity.this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                            openCamera();
-                        } else {
-                            ActivityCompat.requestPermissions(RequestPageActivity.this, new String[]{android.Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_CAMERA);
-                        }
-                    }
-                });
-                dialogFragment.show(getSupportFragmentManager(), GetPhotoDialogFragment.class.getSimpleName());
+                if (ContextCompat.checkSelfPermission(RequestPageActivity.this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    openCamera();
+                } else {
+                    ActivityCompat.requestPermissions(RequestPageActivity.this, new String[]{android.Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_CAMERA);
+                }
             }
         });
     }
@@ -202,13 +187,13 @@ public class RequestPageActivity
         }
     }
 
-    private void openGallery() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"),
-                PERMISSIONS_REQUEST_GALLERY);
-    }
+//    private void openGallery() {
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+//                PERMISSIONS_REQUEST_GALLERY);
+//    }
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -232,29 +217,33 @@ public class RequestPageActivity
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case PERMISSIONS_REQUEST_CAMERA:
-                    File imgFile = new File(mCurrentPhotoPath);
-                    if (imgFile.exists()) {
-                        Picasso.with(this)
-                                .load(imgFile)
-                                .placeholder(R.drawable.no_image)
-                                .resize(req_img_before.getWidth(), req_img_before.getHeight())
-                                .centerCrop()
-                                .error(R.drawable.no_image)
-                                .into(req_img_before);
-                    }
+//                    File imgFile = new File(mCurrentPhotoPath);
+//                    if (imgFile.exists()) {
+//                        Picasso.with(this)
+//                                .load(imgFile)
+//                                .placeholder(R.drawable.no_image)
+//                                .resize(req_img_before.getWidth(), req_img_before.getHeight())
+//                                .centerCrop()
+//                                .error(R.drawable.no_image)
+//                                .into(req_img_before);
+//                    }
+                    Log.d("AAA - camera", mCurrentPhotoPath);
+                    imaBeforeAdapter.setImages(mCurrentPhotoPath);
                     mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, mCurrentPhotoPath);
                     break;
-                case PERMISSIONS_REQUEST_GALLERY:
-                    Uri selectedImageUri = data.getData();
-                    Picasso.with(this)
-                            .load(selectedImageUri)
-                            .placeholder(R.drawable.no_image)
-                            .resize(req_img_before.getWidth(), req_img_before.getHeight())
-                            .centerCrop()
-                            .error(R.drawable.no_image)
-                            .into(req_img_before);
-                    mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, FileManager.getPath(this, selectedImageUri));
-                    break;
+//                case PERMISSIONS_REQUEST_GALLERY:
+//                    Uri selectedImageUri = data.getData();
+////                    Picasso.with(this)
+////                            .load(selectedImageUri)
+////                            .placeholder(R.drawable.no_image)
+////                            .resize(req_img_before.getWidth(), req_img_before.getHeight())
+////                            .centerCrop()
+////                            .error(R.drawable.no_image)
+////                            .into(req_img_before);
+//                    Log.d("AAA - lib", selectedImageUri.getPath().toString());
+//                    imaBeforeAdapter.setImages(selectedImageUri.toString(), 1);
+//                    mPresenter.createTempFileWithSampleSize(RequestPageActivity.this, FileManager.getPath(this, selectedImageUri));
+//                    break;
             }
         }
     }
@@ -394,5 +383,39 @@ public class RequestPageActivity
     @Override
     public void back() {
         finish();
+    }
+
+    @Override
+    public void onViewImage(String imagePath) {
+        // Zoom detail Image
+        ImageView closeIcon, imgPicture;
+        Dialog dialog = new Dialog(RequestPageActivity.this);
+        dialog.setContentView(R.layout.dialog_zoom_image);
+        dialog.setCanceledOnTouchOutside(true);
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams wlp = window.getAttributes();
+        wlp.gravity = Gravity.CENTER;
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        window.setAttributes(wlp);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        /*Mapping*/
+        closeIcon = dialog.findViewById(R.id.img_report_close_icon);
+        imgPicture = dialog.findViewById(R.id.img_report_view_picture);
+
+        closeIcon.setOnClickListener(view -> {
+            dialog.dismiss();
+        });
+
+        // Zoom image
+        File imgFile = new File(imagePath);
+        Picasso.with(dialog.getContext())
+                .load(imgFile)
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .fit().centerCrop()
+                .into(imgPicture);
+
+        dialog.show();
     }
 }
