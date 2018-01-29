@@ -47,8 +47,7 @@
         <activity
             android:name=".auth.SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashScreenTheme"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -103,7 +102,7 @@
             android:parentActivityName=".dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan"></activity>
 
         <activity
             android:name=".dashboard.report.ReportPageActivity"
@@ -111,7 +110,7 @@
             android:parentActivityName=".dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/LoginTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".account.EditAccountActivity"
@@ -144,6 +143,7 @@
             android:parentActivityName=".account.EditAccountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DashboardTheme" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e53bc7c27f98190ecf302e6c329ee36e1fd88060" />

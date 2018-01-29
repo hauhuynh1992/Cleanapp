@@ -164,9 +164,10 @@
 
 
             <EditText
+                android:minHeight="100dp"
                 android:id="@+id/rep_edt_remark"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/rating_bar"
                 android:layout_marginLeft="@dimen/textsize_10dp"
                 android:layout_marginRight="@dimen/textsize_10dp"

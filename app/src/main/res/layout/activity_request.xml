@@ -169,7 +169,7 @@
             <EditText
                 android:id="@+id/req_edt_notes"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/req_txt_notes"
                 android:layout_marginLeft="@dimen/textsize_10dp"
                 android:layout_marginRight="@dimen/textsize_10dp"
@@ -177,6 +177,7 @@
                 android:fontFamily="@font/clanot_medium"
                 android:gravity="top"
                 android:inputType="textMultiLine"
+                android:minHeight="100dp"
                 android:padding="@dimen/textsize_10dp" />
 
             <View
